@@ -24,9 +24,9 @@ mongoose.connection.once("open", () => {
 });
 
 function initialize() {
-  const userRouter = require("./routes/user/user");
+  const userRouter = require("./routes/user");
   app.use("/User", userRouter);
-  const sessionRouter = require("./routes/session/session");
+  const sessionRouter = require("./routes/session");
   app.use("/Session", sessionRouter);
 }
 

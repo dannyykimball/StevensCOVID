@@ -19,6 +19,7 @@ export default class Register extends Component {
       email: "",
       firstName: "",
       lastName: "",
+      password: "",
       school: "",
       year: 0,
       isTutor: false,
@@ -74,19 +75,20 @@ export default class Register extends Component {
       email: this.state.email,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
+      password: this.state.password,
       school: this.state.school,
-      year: this.state.year,
+      year: parseInt(this.state.year),
       isTutor: this.state.isTutor,
     };
 
     console.log(user);
 
     axios
-      .post("http://localhost:5000/signup", user)
+      .post("http://localhost:5000/User/Signup", user)
       .then((res) => console.log(res.data));
 
     //Where user is redirected after signup
-    window.location = "/";
+    //window.location = "/";
   }
 
   render() {
