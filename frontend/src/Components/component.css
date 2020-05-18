@@ -1,0 +1,17 @@
+.navigation-bar {
+  position: absolute;
+  display: flex;
+  background-color: beige;
+  width: 100%;
+  height: 10%;
+  left: 0px;
+  top: 0px;
+}
+
+.logo {
+  position: relative;
+  width: 10%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+}
