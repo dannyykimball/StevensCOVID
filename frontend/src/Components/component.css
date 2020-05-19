@@ -1,11 +1,19 @@
 .navigation-bar {
   position: absolute;
   display: flex;
-  background-color: beige;
+  background-color: #fdc649;
+  font-family: Georgia, "Times New Roman", Times, serif;
   width: 100%;
   height: 10%;
   left: 0px;
   top: 0px;
+}
+
+.navLinkFont {
+  font-family: fantasy;
+  text-decoration: none;
+  color: #000000;
+  margin-left: 100px;
 }
 
 .logo {
