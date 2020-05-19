@@ -11,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
 import PeopleIcon from '@material-ui/icons/People';
-
+import Grow from '@material-ui/core/Grow';
 //images
 const science = require('../Assets/subjects/science.png')
 const english = require('../Assets/subjects/english.png')
@@ -95,33 +95,37 @@ export default function Session(props) {
   }, []);
 
   return (
-
-    <Grid item>
-      <Card className={classes.root}>
-        <div className={classes.details}>
-          <CardContent className={classes.content}>
-            <Typography component="h5" variant="h5">
-              {props.roomName}
-            </Typography>
-            <Typography variant="subtitle1" color="textSecondary">
-              {props.createdBy}
-            </Typography>
-          </CardContent>
-          <div className={classes.controls}>
-            <Button variant="contained" color="primary" onClick={clickedRoomName}>
-              Join
+    <Grow
+      in={true}
+      {...(true ? { timeout: (1000 * props.index) } : {})}
+    >
+      <Grid item>
+        <Card className={classes.root}>
+          <div className={classes.details}>
+            <CardContent className={classes.content}>
+              <Typography component="h5" variant="h5">
+                {props.roomName}
+              </Typography>
+              <Typography variant="subtitle1" color="textSecondary">
+                {props.createdBy}
+              </Typography>
+            </CardContent>
+            <div className={classes.controls}>
+              <Button variant="contained" color="primary" onClick={clickedRoomName}>
+                Join
             </Button>
-            <Badge badgeContent={peopleInRoom} color="primary" style={{ marginLeft: "30px" }}>
-              <PeopleIcon />
-            </Badge>
+              <Badge badgeContent={peopleInRoom} color="primary" style={{ marginLeft: "30px" }}>
+                <PeopleIcon />
+              </Badge>
+            </div>
           </div>
-        </div>
-        <CardMedia
-          className={classes.cover}
-          image={pic}
-          title="Subject"
-        />
-      </Card>
-    </Grid >
+          <CardMedia
+            className={classes.cover}
+            image={pic}
+            title="Subject"
+          />
+        </Card>
+      </Grid >
+    </Grow>
   );
 }
