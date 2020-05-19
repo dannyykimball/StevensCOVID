@@ -45,7 +45,8 @@ export default function Session(props) {
   const [peopleInRoom, setPeopleInRoom] = useState(0)
 
   function clickedRoomName() {
-    window.location.href = "https://www.securemeeting.org/pages/chat.html?roomId=" + props.roomName + "#/room/join"
+    let link = "https://www.securemeeting.org/pages/chat.html?roomId=" + props.roomName + "#/room/join"
+    window.open(link, '_blank')
   }
 
 

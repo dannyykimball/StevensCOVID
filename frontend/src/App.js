@@ -25,7 +25,7 @@ export default function AppEngine() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/entry" exact component={Entry} />
-            <Route path="/session" exact component={Sessions} />
+            <Route path="/sessions" exact component={Sessions} />
             <Route path="*" component={Error} />
           </Switch>
         </div>
