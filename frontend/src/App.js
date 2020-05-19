@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Screens/home-page.js";
 import Entry from "./Screens/entry-page.js";
 import Error from "./Screens/error-page.js";
-
+import Sessions from "./Screens/sessions-page";
 //Components
 import NavBar from "./Components/navigation-bar.component.js";
 
@@ -25,6 +25,7 @@ export default function AppEngine() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/entry" exact component={Entry} />
+            <Route path="/session" exact component={Sessions} />
             <Route path="*" component={Error} />
           </Switch>
         </div>
