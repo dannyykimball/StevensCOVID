@@ -12,6 +12,12 @@ import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
 import PeopleIcon from '@material-ui/icons/People';
 
+//images
+const science = require('../Assets/subjects/science.png')
+const english = require('../Assets/subjects/english.png')
+const history = require('../Assets/subjects/history.jfif')
+const math = require('../Assets/subjects/math.jfif')
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -43,6 +49,7 @@ export default function Session(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [peopleInRoom, setPeopleInRoom] = useState(0)
+  const [pic, setPic] = useState()
 
   function clickedRoomName() {
     let link = "https://www.securemeeting.org/pages/chat.html?roomId=" + props.roomName + "#/room/join"
@@ -69,11 +76,26 @@ export default function Session(props) {
     setPeopleInRoom(num)
   }
 
+  function setPicture() {
+    let subject = props.subject;
+    if (subject === "Science") {
+      setPic(science)
+    } else if (subject === "English") {
+      setPic(english)
+    } else if (subject === "Math") {
+      setPic(math)
+    } else if (subject === "History") {
+      setPic(history)
+    }
+  }
+
   useEffect(() => {
     onPageLoad(fetchPeopleInRoom());
+    setPicture()
   }, []);
 
   return (
+
     <Grid item>
       <Card className={classes.root}>
         <div className={classes.details}>
@@ -96,7 +118,7 @@ export default function Session(props) {
         </div>
         <CardMedia
           className={classes.cover}
-          src="https://thumbs-prod.si-cdn.com/s-jZTk0XtVmp-89MlOgFXqaAVe4=/fit-in/1600x0/https://public-media.si-cdn.com/filer/29/0f/290fb8c0-1872-46e5-8c12-235742905def/science_smithsonian_magazine_booklist_2019.png"
+          image={pic}
           title="Subject"
         />
       </Card>
