@@ -88,13 +88,13 @@ export default class Register extends Component {
       .then((res) => console.log(res.data));
 
     //Where user is redirected after signup
-    //window.location = "/";
+    window.location = "/sessions";
   }
 
   render() {
     return (
-      <div>
-        <h3>Sign Up</h3>
+      <div className="signupbox orange">
+        <h3 className="kinder">Sign Up</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Email: </label>
@@ -164,7 +164,7 @@ export default class Register extends Component {
           </div>
 
           <div className="form-group">
-            <input type="submit" value="Sign Up" className="btn btn-primary" />
+            <input type="submit" value="Sign Up" className="btn" />
           </div>
         </form>
       </div>

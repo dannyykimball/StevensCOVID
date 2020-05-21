@@ -3,8 +3,6 @@
 .CurrentScreen {
   position: absolute;
   width: 100%;
-  height: 90%;
   left: 0px;
   top: 10%;
-  background-color: #acdaba;
 }

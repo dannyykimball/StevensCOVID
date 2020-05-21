@@ -1,7 +1,23 @@
+.signupbox {
+  margin-left: 10%;
+  padding: 5px;
+}
+
+.form-control {
+  font-size: 20pt;
+  font-family: kinder;
+  right: 0;
+  height: 20px;
+}
+.form-group {
+  font-size: 24pt;
+}
+.btn {
+  padding: 10px;
+}
 .navigation-bar {
   position: absolute;
   display: flex;
-  background-color: #fdc649;
   font-family: Georgia, "Times New Roman", Times, serif;
   width: 100%;
   height: 10%;
@@ -10,10 +26,12 @@
 }
 
 .navLinkFont {
-  font-family: fantasy;
+  font-family: "chalk";
+  font-size: 7pt;
   text-decoration: none;
   color: #000000;
-  margin-left: 100px;
+  margin-left: 7%;
+  margin-top: 15px;
 }
 
 .logo {
@@ -22,4 +40,10 @@
   height: 100%;
   left: 0px;
   top: 0px;
+  background-color: black;
+}
+
+.website {
+  margin-left: 50px;
+  font-family: fantasy;
 }

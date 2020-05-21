@@ -21,7 +21,7 @@ export default function AppEngine() {
         <NavBar />
 
         {/* Screens */}
-        <div id="CurrentScreen" class="CurrentScreen">
+        <div id="CurrentScreen" class="CurrentScreen turquoise">
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/entry" exact component={Entry} />

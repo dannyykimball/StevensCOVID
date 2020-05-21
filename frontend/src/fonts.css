@@ -1,1 +1,33 @@
 /* Fonts */
+
+@font-face {
+  font-family: "Chalk";
+  src: local("Chalk"), url(./Assets/NeatChalk.ttf) format("truetype");
+}
+@font-face {
+  font-family: "kinder";
+  src: local("kinder"), url(./Assets/kindergarten.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Learners";
+  src: local("Learners"), url(./Assets/Learners.ttf) format("truetype");
+}
+@font-face {
+  font-family: "cloud";
+  src: local("cloud"), url(./Assets/Cloudy.ttf) format("truetype");
+}
+
+.learners {
+  font-family: "Learners";
+}
+.cloud {
+  font-family: "cloud";
+}
+.chalk {
+  font-family: "Chalk";
+}
+
+.kinder {
+  font-family: "kinder";
+}
