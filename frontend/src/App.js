@@ -14,7 +14,7 @@ import Covid from "./Screens/covid-page";
 import Studyplan from "./Screens/studyplan-page";
 //Components
 import NavBar from "./Components/navigation-bar.component.js";
-import UserContext from './userContext';
+import UserContext from "./userContext";
 
 export default function AppEngine() {
   return (
@@ -23,29 +23,18 @@ export default function AppEngine() {
         {/* Navigation Bar */}
         <NavBar />
         {/* Screens */}
-<<<<<<< HEAD
-        <div id="CurrentScreen" class="CurrentScreen turquoise">
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/covid" exact component={Covid} />
-            <Route path="/studyplan" exact component={Studyplan} />
-            <Route path="/entry" exact component={Entry} />
-            <Route path="/sessions" exact component={Sessions} />
-            <Route path="*" component={Error} />
-          </Switch>
-        </div>
-=======
-        <UserContext.Provider value={{ user: "yeah" }} >
+        <UserContext.Provider value={{ user: "yeah" }}>
           <div id="CurrentScreen" class="CurrentScreen turquoise">
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/entry" exact component={Entry} />
               <Route path="/sessions" exact component={Sessions} />
+              <Route path="/studyplan" exact component={Studyplan} />
+              <Route path="/covid" exact component={Covid} />
               <Route path="*" component={Error} />
             </Switch>
           </div>
         </UserContext.Provider>
->>>>>>> ee80b5f9a69d47e0544ece199463fc4117c1d587
       </div>
     </Router>
   );
