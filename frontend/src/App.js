@@ -12,6 +12,7 @@ import Error from "./Screens/error-page.js";
 import Sessions from "./Screens/sessions-page";
 //Components
 import NavBar from "./Components/navigation-bar.component.js";
+import UserContext from './userContext';
 
 export default function AppEngine() {
   return (
@@ -19,16 +20,17 @@ export default function AppEngine() {
       <div id="App">
         {/* Navigation Bar */}
         <NavBar />
-
         {/* Screens */}
-        <div id="CurrentScreen" class="CurrentScreen turquoise">
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/entry" exact component={Entry} />
-            <Route path="/sessions" exact component={Sessions} />
-            <Route path="*" component={Error} />
-          </Switch>
-        </div>
+        <UserContext.Provider value={{ user: "yeah" }} >
+          <div id="CurrentScreen" class="CurrentScreen turquoise">
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/entry" exact component={Entry} />
+              <Route path="/sessions" exact component={Sessions} />
+              <Route path="*" component={Error} />
+            </Switch>
+          </div>
+        </UserContext.Provider>
       </div>
     </Router>
   );
