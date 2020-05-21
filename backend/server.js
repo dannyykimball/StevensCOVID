@@ -28,6 +28,8 @@ function initialize() {
   app.use("/User", userRouter);
   const sessionRouter = require("./routes/session");
   app.use("/Session", sessionRouter);
+  const taskRouter = require("./routes/tasks");
+  app.use("/Task", taskRouter);
 }
 
 app.listen(port, () => {
