@@ -32,6 +32,12 @@ const UserRecordSchema = new Schema(
             type: Boolean,
             required: true,
         },
+        tasks: [
+            {
+                type: String,
+                required: true
+            }
+        ]
     },
     { collection: "Users" }
 );

@@ -25,6 +25,7 @@ router.route("/Signup").post(async (req, res) => {
     school: school,
     year: year,
     isTutor: isTutor,
+    tasks: []
   };
 
   var newUserRecord = new UserRecord(newUser);
@@ -102,6 +103,27 @@ router.route("/Login").post(async (req, res) => {
         let response = new Response(false, "Wrong Password", null);
         res.send(response);
       }
+    })
+    .catch((err) => {
+      let response = new Response(
+        false,
+        "An account with that email does not exist",
+        null
+      );
+      res.send(response);
+    });
+});
+
+/**
+ * Checks if a users login is correct
+ * @returns {UserRecord} the record of the user
+ */
+router.route("/GetAllTasks/:id").get(async (req, res) => {
+  const userid = req.params.id;
+  await UserRecord.findOne({ _id: userid })
+    .then((record) => {
+      let response = new Response(true, null, record.tasks);
+      res.send(response);
     })
     .catch((err) => {
       let response = new Response(
