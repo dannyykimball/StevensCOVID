@@ -67,24 +67,18 @@ export default function SessionView(props) {
         alignItems="center"
         spacing={2}
         style={{ marginTop: "20px" }}>
-
         <Grid item xs>
           <Typography variant="h4" >
             Current Sessions
           </Typography>
         </Grid>
-
         <Grid item xs>
-
           <Button variant="contained" color="primary" onClick={handleOpen}>
             Create new
           </Button>
-
         </Grid>
       </Grid>
-
       <div style={{ marginTop: "50px", width: "100%", height: "100%", paddingLeft: "3%", paddingRight: "3%" }}>
-
         <Grid container spacing={3} style={{ marginTop: "40px" }}>
           {sessions.map((session, index) =>
             <Session roomName={session.roomName} createdBy={session.createdBy} subject={session.subject} index={index} />
