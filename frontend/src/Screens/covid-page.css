@@ -1,0 +1,42 @@
+.grid {
+  display: grid;
+  grid-template-columns: [begin] 10% [line2] auto [line3] 10% [end];
+  grid-template-rows: [begin] 10% [row2] 100px [row3] auto [end];
+}
+.mydog {
+  width: 40%;
+  height: 100;
+}
+.yeah {
+  display: flex;
+}
+.rightL {
+  width: 40%;
+  font-family: learners;
+  font-size: 18pt;
+  height: 800px;
+  left: 5%;
+}
+.rightC {
+  font-family: learners;
+  font-size: 18pt;
+  padding-left: 20px;
+  width: 40%;
+  height: 800px;
+  left: 50%;
+}
+.tydoc {
+  height: 700px;
+  width: 80%;
+}
+.pic {
+  grid-column-start: 1;
+  grid-column-end: span col4-start;
+  grid-row-start: row1-start;
+  grid-row-end: span 2;
+}
+
+.picture {
+  height: 100%;
+  width: 100%;
+}
