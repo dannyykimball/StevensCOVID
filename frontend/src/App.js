@@ -14,16 +14,16 @@ import Covid from "./Screens/covid-page";
 import Studyplan from "./Screens/studyplan-page";
 //Components
 import NavBar from "./Components/navigation-bar.component.js";
-import UserContext from "./userContext";
+import Store from "./Store";
 
 export default function AppEngine() {
   return (
-    <Router>
-      <div id="App">
-        {/* Navigation Bar */}
-        <NavBar />
-        {/* Screens */}
-        <UserContext.Provider value={{ user: "yeah" }}>
+    <Store>
+      <Router>
+        <div id="App">
+          {/* Navigation Bar */}
+          <NavBar />
+          {/* Screens */}
           <div id="CurrentScreen" class="CurrentScreen turquoise">
             <Switch>
               <Route path="/" exact component={Home} />
@@ -34,8 +34,8 @@ export default function AppEngine() {
               <Route path="*" component={Error} />
             </Switch>
           </div>
-        </UserContext.Provider>
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </Store>
   );
 }

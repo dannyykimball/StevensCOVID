@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import UserContext from '../userContext';
+import { UserContext } from '../Store';
 
 export default function Login(props) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const userContext = useContext(UserContext)
+  const [user, setUser] = useContext(UserContext);
 
   function onChangeEmail(e) {
     setEmail(e.target.value)
@@ -17,18 +17,18 @@ export default function Login(props) {
 
   function onSubmit(e) {
     e.preventDefault();
-    var user = {
+    var userLoginRequest = {
       email: email,
       password: password
     }
+    console.log("user context before:")
     console.log(user)
-    console.log(userContext)
     axios
-      .post("http://" + window.location.hostname + ":5000/User/Login", user)
+      .post("http://" + window.location.hostname + ":5000/User/Login", userLoginRequest)
       .then((res) => {
         console.log(res.data)
-
-
+        if (res.data.isSuccess)
+          setUser(res.data.data)
       }).catch((err) => { console.log(err) });
   }
 
