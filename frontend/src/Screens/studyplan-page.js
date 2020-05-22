@@ -36,7 +36,7 @@ let template =
       "style": {
         "width": 320
       },
-      "label": "2/5",
+      "label": "0/10",
       "cards": [
 
       ]
@@ -191,6 +191,7 @@ const default11Through12 = [
 
 export default function StudyEngine() {
   const [data, setData] = useState()
+  const [score, setScore] = useState(0)
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useContext(UserContext);
   const url = useLocation();
@@ -253,20 +254,37 @@ export default function StudyEngine() {
     });
   }
 
+  function fetchScores() {
+    console.log(user._id)
+    return new Promise(resolve => {
+      axios
+        .get(url.protocol + "//" + url.hostname + ":5000" + "/Task/GetScore/" + user._id)
+        .then((res) => {
+          console.log(res.data)
+          resolve(res.data)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+    });
+  }
+
+
   async function onPageLoad() {
     let tasks = await fetchTasks()
     if (tasks.isSuccess) {
       buildBoard(tasks.data)
     }
+    let scores = await fetchScores();
+    setScore(scores.data)
   }
 
 
   function saveCardChange(cardDetails) {
-    console.log(cardDetails)
     let request =
     {
       name: cardDetails.title,
-      duration: parseInt(cardDetails.label),
+      duration: parseFloat(cardDetails.label),
       description: cardDetails.description,
       status: cardDetails.laneId,
       userId: "5ec5fac4ebaac90c864e6cbc",
@@ -287,15 +305,9 @@ export default function StudyEngine() {
   }
 
   async function handleCardChange(cardId, sourceLaneId, targetLaneId, position, cardDetails) {
-    /*
-    console.log("cardId:" + cardId)
-    console.log("sourceLaneId:" + sourceLaneId)
-    console.log("targetLaneId:" + targetLaneId)
-    console.log("position:" + position)
-    console.log("cardDetails:" + cardDetails)
-    console.log(cardDetails)
-    */
     await saveCardChange(cardDetails)
+    let scores = await fetchScores();
+    setScore(scores.data)
   }
 
   useEffect(() => {
@@ -306,7 +318,7 @@ export default function StudyEngine() {
 
   return (
     <div id="EntryPage">
-      {user ? <h1>Study Plan for {user.year}th Grade </h1>
+      {user ? <h1>Study Plan for {user.year}th Grade                  Your score is {score}</h1>
         : <h1>Study Plan</h1>}
       {loading ? <h1>Please login to use the study plan</h1>
         : <Board data={data} draggable laneDraggable={false} handleDragEnd={handleCardChange} />}

@@ -74,6 +74,32 @@ router.route("/GetAll/:userId").get(async (req, res) => {
 });
 
 /**
+ * Creates a task object
+ * @returns {TaskRecord} the record of the task
+ */
+router.route("/GetScore/:userId").get(async (req, res) => {
+  const userId = req.params.userId;
+
+  TaskRecord.find({ userId: userId })
+    .then((records) => {
+      var score = 0;
+      for (var i = 0; i < records.length; i++) {
+        if (records[i].status = "COMPLETED") {
+          score += (records[i].duration * 100)
+        }
+      }
+      let response = new Response(true, null, score);
+      res.send(response);
+    })
+    .catch((err) => {
+      console.error(err)
+      let response = new Response(false, "An error occured", null);
+      res.send(response);
+    })
+});
+
+
+/**
  * Adds a task id to a user
  * @returns {String} all the Tasks
  */
