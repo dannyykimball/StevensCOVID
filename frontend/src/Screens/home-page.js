@@ -46,7 +46,7 @@ export default function HomeEngine() {
           </div>
         </div>
         <div className="rightCol">
-          <img src={computerSocial} alt="computerSocial" className="img" />
+          <img src={computerSocial} alt="computerSocial" className="imgaa" />
         </div>
       </div>
       <div className="banner yellow">Mission Statement</div>
