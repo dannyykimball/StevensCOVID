@@ -8,11 +8,11 @@ export default function Login(props) {
   const [user, setUser] = useContext(UserContext);
 
   function onChangeEmail(e) {
-    setEmail(e.target.value)
+    setEmail(e.target.value);
   }
 
   function onChangePassword(e) {
-    setPassword(e.target.value)
+    setPassword(e.target.value);
   }
 
   function onSubmit(e) {
@@ -32,11 +32,9 @@ export default function Login(props) {
       }).catch((err) => { console.log(err) });
   }
 
-
-
   return (
     <div className="signupbox orange">
-      <h3 className="kinder">Login</h3>
+      <h3 className="learners center">Login</h3>
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label>Email: </label>
@@ -53,17 +51,21 @@ export default function Login(props) {
           <label>Password: </label>
           <input
             type="text"
-            className="form-control"
+            className="form-control password"
             value={password}
             onChange={onChangePassword}
           />
         </div>
 
         <div className="form-group">
-          <input type="submit" value="Log In" className="btn" onClick={onSubmit} />
+          <input
+            type="submit"
+            value="Log In"
+            className="btn"
+            onClick={onSubmit}
+          />
         </div>
       </form>
     </div>
   );
-
 }

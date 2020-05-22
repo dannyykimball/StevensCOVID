@@ -1,19 +1,33 @@
 .signupbox {
   margin-left: 10%;
+  width: 700px;
   padding: 5px;
+}
+
+.center {
+  text-align: center;
+  line-height: 0px;
 }
 
 .form-control {
   font-size: 20pt;
-  font-family: kinder;
+  font-family: learners;
   right: 0;
   height: 20px;
+}
+.password {
+  -webkit-text-security: square;
 }
 .form-group {
   font-size: 24pt;
 }
 .btn {
+  background-color: #fffff1;
+  font-size: 20pt;
+  font-family: learners;
   padding: 10px;
+  width: 200px;
+  height: 60px;
 }
 .navigation-bar {
   position: absolute;

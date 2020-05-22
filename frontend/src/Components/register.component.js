@@ -94,7 +94,7 @@ export default class Register extends Component {
   render() {
     return (
       <div className="signupbox orange">
-        <h3 className="kinder">Sign Up</h3>
+        <h3 className="learners center">Sign Up</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Email: </label>
@@ -126,11 +126,11 @@ export default class Register extends Component {
               onChange={this.onChangeLastName}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group ">
             <label>Password: </label>
             <input
               type="text"
-              className="form-control"
+              className="form-control password"
               value={this.state.password}
               onChange={this.onChangePassword}
             />
