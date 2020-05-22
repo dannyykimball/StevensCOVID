@@ -6,7 +6,7 @@ import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 //=====Local Imports=====
 export const UserContext = React.createContext(null);
 
-const primary = indigo[800];
+const primary = orange[600];
 const secondary = orange[600];
 
 const palette = {

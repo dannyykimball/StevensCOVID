@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from "axios";
 import { useLocation } from 'react-use';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -18,6 +18,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import CloseIcon from "@material-ui/icons/Close";
+import { UserContext } from '../../Store';
 
 const useStyles = makeStyles(CreateSessionModalStyles);
 
@@ -26,6 +27,7 @@ export default function CreateSessionModal(props) {
     const [open, setOpen] = React.useState(props.open);
     const [roomName, setRoomName] = React.useState('');
     const [subject, setSubject] = React.useState('');
+    const [user, setUser] = useContext(UserContext);
     const url = useLocation();
 
     const handleSubjectChange = (event) => {
@@ -39,8 +41,12 @@ export default function CreateSessionModal(props) {
     };
 
     function fetchCreateSession() {
+        let createdBy = "Anonymous";
+        if (user) {
+            createdBy = user.firstName + " " + user.lastName
+        }
         var createRequestObj = {
-            createdBy: "kyritzb@gmail.com",
+            createdBy: createdBy,
             roomName: roomName,
             subject: subject
         }

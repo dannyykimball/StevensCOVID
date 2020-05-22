@@ -9,17 +9,19 @@ const { Response } = require("../models/response");
  * Creates a task object
  * @returns {TaskRecord} the record of the task
  */
-router.route("/Create").post(async (req, res) => {
+router.route("/Create/:userId").post(async (req, res) => {
   const name = req.body.name;
   const duration = req.body.duration;
   const description = req.body.description;
-  const isDone = req.body.isDone;
+  const status = req.body.status;
+  const userId = req.params.userId;
 
   const newTask = {
     name: name,
     duration: duration,
     description: description,
-    isDone: isDone
+    status: status,
+    userId: userId
   };
 
   var newTaskRecord = new TaskRecord(newTask);
@@ -34,6 +36,25 @@ router.route("/Create").post(async (req, res) => {
       let response = new Response(false, "An error occured", null);
       res.send(response);
     });
+});
+
+/**
+ * Creates a task object
+ * @returns {TaskRecord} the record of the task
+ */
+router.route("/GetAll/:userId").get(async (req, res) => {
+  const userId = req.params.userId;
+
+  TaskRecord.find({ userId: userId })
+    .then((records) => {
+      let response = new Response(true, null, records);
+      res.send(response);
+    })
+    .catch((err) => {
+      console.error(err)
+      let response = new Response(false, "An error occured", null);
+      res.send(response);
+    })
 });
 
 /**
@@ -57,15 +78,13 @@ router.route("/AddToUser/:userid").post(async (req, res) => {
 });
 
 /**
- * Adds a task id to a user
+ * Gets a task by id
  * @returns {TaskRecord} all the Tasks
  */
 router.route("/Get/:id").get(async (req, res) => {
   const taskId = req.params.id;
-  console.log(taskId)
   await TaskRecord.findOne({ _id: taskId })
     .then((task) => {
-      console.log(task)
       let response = new Response(true, null, task);
       res.send(response);
     })
@@ -76,14 +95,15 @@ router.route("/Get/:id").get(async (req, res) => {
 });
 
 /**
- * Marks task as done
+ * Change status
  * @returns {TaskRecord} 
  */
-router.route("/MarkDone/:id").post(async (req, res) => {
+router.route("/ChangeStatus/:id").post(async (req, res) => {
   const taskId = req.params.id;
+  const status = req.body.status;
   await TaskRecord.findOne({ _id: taskId })
     .then((task) => {
-      task.isDone = true;
+      task.status = status;
       task.save();
       let response = new Response(true, null, task);
       res.send(response);
@@ -93,26 +113,6 @@ router.route("/MarkDone/:id").post(async (req, res) => {
       res.send(response);
     });
 });
-
-/**
- * Marks task as done
- * @returns {TaskRecord} 
- */
-router.route("/MarkUnDone/:id").post(async (req, res) => {
-  const taskId = req.params.id;
-  await TaskRecord.findOne({ _id: taskId })
-    .then((task) => {
-      task.isDone = false;
-      task.save();
-      let response = new Response(true, null, task);
-      res.send(response);
-    })
-    .catch((err) => {
-      let response = new Response(false, "an error occured", null);
-      res.send(response);
-    });
-});
-
 
 
 

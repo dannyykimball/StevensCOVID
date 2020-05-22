@@ -16,8 +16,12 @@ const TaskRecordSchema = new Schema(
             type: String,
             required: true,
         },
-        isDone: {
-            type: Boolean,
+        status: {
+            type: String,
+            required: true,
+        },
+        userId: {
+            type: String,
             required: true,
         }
     },
