@@ -23,6 +23,10 @@ const TaskRecordSchema = new Schema(
         userId: {
             type: String,
             required: true,
+        },
+        cardId: {
+            type: String,
+            required: true,
         }
     },
     { collection: "Tasks" }

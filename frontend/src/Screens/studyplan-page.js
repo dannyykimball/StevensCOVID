@@ -204,7 +204,7 @@ export default function StudyEngine() {
     let completed = [];
     for (var i = 0; i < tasks.length; i++) {
       let newCard = {
-        "id": tasks[i]._id,
+        "id": tasks[i].cardId,
         "title": tasks[i].name,
         "label": tasks[i].duration + " Hours",
         "description": tasks[i].description
@@ -262,13 +262,15 @@ export default function StudyEngine() {
 
 
   function saveCardChange(cardDetails) {
+    console.log(cardDetails)
     let request =
     {
       name: cardDetails.title,
       duration: parseInt(cardDetails.label),
       description: cardDetails.description,
       status: cardDetails.laneId,
-      userId: "5ec5fac4ebaac90c864e6cbc"
+      userId: "5ec5fac4ebaac90c864e6cbc",
+      cardId: cardDetails.id
     }
 
     return new Promise(resolve => {

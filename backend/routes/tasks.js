@@ -14,6 +14,7 @@ router.route("/Create/:userId").post(async (req, res) => {
   const duration = req.body.duration;
   const description = req.body.description;
   const status = req.body.status;
+  const cardId = req.body.cardId;
   const userId = req.params.userId;
 
   const newTask = {
@@ -21,21 +22,36 @@ router.route("/Create/:userId").post(async (req, res) => {
     duration: duration,
     description: description,
     status: status,
-    userId: userId
+    userId: userId,
+    cardId: cardId
   };
 
   var newTaskRecord = new TaskRecord(newTask);
 
-  newTaskRecord
-    .save()
-    .then(() => {
-      let response = new Response(true, null, newTask);
-      res.send(response);
+  TaskRecord.find({ cardId: cardId, userId: userId })
+    .then((record) => {
+      if (record.length != 0) { //update task status
+        console.log("record updated")
+        //console.log(record[0])
+        record[0].status = status
+        record[0].save();
+        let response = new Response(true, null, record[0]);
+        res.send(response);
+      }
+      else {
+        console.log("record created")
+        newTaskRecord
+          .save()
+          .then(() => {
+            let response = new Response(true, null, newTask);
+            res.send(response);
+          })
+          .catch(() => {
+            let response = new Response(false, "An error occured", null);
+            res.send(response);
+          });
+      }
     })
-    .catch(() => {
-      let response = new Response(false, "An error occured", null);
-      res.send(response);
-    });
 });
 
 /**
