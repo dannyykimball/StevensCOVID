@@ -154,7 +154,6 @@ export default function StudyEngine() {
         : <h1>Study Plan</h1>}
       {loading ? <h1>Please login to use the study plan</h1>
         : <Board data={data} draggable />}
-
     </div>
   );
 }
