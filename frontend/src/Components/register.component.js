@@ -87,12 +87,14 @@ export default class Register extends Component {
       .post("http://localhost:5000/User/Signup", user)
       .then((res) => {
         if (res.data.isSuccess) {
+          console.log("yeah")
           localStorage.setItem("user", JSON.stringify(res.data.data))
+          window.location = "/sessions";
         }
       });
 
     //Where user is redirected after signup
-    window.location = "/sessions";
+
   }
 
   render() {
