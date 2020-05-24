@@ -193,7 +193,7 @@ export default function StudyEngine() {
   const [data, setData] = useState()
   const [score, setScore] = useState(0)
   const [loading, setLoading] = useState(true)
-  const [user, setUser] = useContext(UserContext);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const url = useLocation();
 
 
@@ -311,14 +311,18 @@ export default function StudyEngine() {
   }
 
   useEffect(() => {
-    if (user) {
+    setUser(JSON.parse(localStorage.getItem("user")))
+    console.log(JSON.parse(localStorage.getItem("user")))
+
+    if (localStorage.getItem("user")) {
       onPageLoad();
     }
+
   }, []);
 
   return (
     <div id="EntryPage">
-      {user ? <h1>Study Plan for {user.year}th Grade                  Your score is {score}</h1>
+      {user ? <h1>Study Plan for {user.year}th Grade Your score is {score}</h1>
         : <h1>Study Plan</h1>}
       {loading ? <h1>Please login to use the study plan</h1>
         : <Board data={data} draggable laneDraggable={false} handleDragEnd={handleCardChange} />}

@@ -85,7 +85,11 @@ export default class Register extends Component {
 
     axios
       .post("http://localhost:5000/User/Signup", user)
-      .then((res) => console.log(res.data));
+      .then((res) => {
+        if (res.data.isSuccess) {
+          localStorage.setItem("user", JSON.stringify(res.data.data))
+        }
+      });
 
     //Where user is redirected after signup
     window.location = "/sessions";

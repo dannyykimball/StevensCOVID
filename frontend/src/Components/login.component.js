@@ -27,8 +27,13 @@ export default function Login(props) {
       .post("http://" + window.location.hostname + ":5000/User/Login", userLoginRequest)
       .then((res) => {
         console.log(res.data)
-        if (res.data.isSuccess)
+        if (res.data.isSuccess) {
+          localStorage.setItem("user", JSON.stringify(res.data.data))
           setUser(res.data.data)
+          //Where user is redirected after signup
+          window.location = "/sessions";
+        }
+
       }).catch((err) => { console.log(err) });
   }
 
